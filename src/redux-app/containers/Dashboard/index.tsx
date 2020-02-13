@@ -8,7 +8,7 @@ import HoC from '../../containers/HoC';
 // import {  AppProfile, AppConfig } from '../../../types/models';
 import { RootState } from '../../reducers';
 // import * as DeadlineActions from '../../actions/deadlinetask'
-// import * as AppConfigActions from '../../actions/appconfig';
+import * as AppConfigActions from '../../actions/appconfig';
 import { bindActionCreators } from 'redux';
 // import MainForm from '../../components/MainForm';
 
@@ -28,8 +28,8 @@ export const WelcomePage = (props:IWelcomePageProps)=> {
 export namespace Dashboard {
   export interface Props extends RouteComponentProps<void> {
 //     profile:AppProfile;
-//     appconfig:AppConfig;
-//    appconfigactions:typeof AppConfigActions;
+    appconfig:AppConfig;
+   appconfigactions:typeof AppConfigActions;
   }
 
   export interface State {
@@ -51,7 +51,9 @@ export class Dashboard extends React.Component<Dashboard.Props, Dashboard.State>
 
 
   public async componentDidMount(){
-   
+    // this.props.appconfigactions.AppChanges({
+    //   PageTitle:'Dashboard'
+    // });
   }
 
   public render(){
@@ -59,7 +61,8 @@ export class Dashboard extends React.Component<Dashboard.Props, Dashboard.State>
 
       return <React.Fragment>
         {/* {form} */}
-        <p>Dashboard Container</p>
+        <p>{this.props.appconfig.PageTitle}</p>
+  <p>IsProduction: </p>
       </React.Fragment>;
   }
   
@@ -68,14 +71,14 @@ export class Dashboard extends React.Component<Dashboard.Props, Dashboard.State>
 function mapStateToProps(state: RootState) {
   return {
     // profile:state.profile,
-    // appconfig:state.appconfig
+    appconfig:state.appconfig
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     // deadlineactions: bindActionCreators(DeadlineActions as any, dispatch),
-    // appconfigactions:bindActionCreators(AppConfigActions as any,dispatch)
+    appconfigactions:bindActionCreators(AppConfigActions as any,dispatch)
   };
 }
 
