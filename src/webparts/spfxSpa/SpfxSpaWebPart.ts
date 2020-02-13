@@ -10,6 +10,7 @@ import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import * as strings from 'SpfxSpaWebPartStrings';
 import SpfxSpa from './components/SpfxSpa';
 import { ISpfxSpaProps } from './components/ISpfxSpaProps';
+import ReduxApp from '../../redux-app/index';
 
 export interface ISpfxSpaWebPartProps {
   description: string;
@@ -18,14 +19,16 @@ export interface ISpfxSpaWebPartProps {
 export default class SpfxSpaWebPart extends BaseClientSideWebPart <ISpfxSpaWebPartProps> {
 
   public render(): void {
-    const element: React.ReactElement<ISpfxSpaProps> = React.createElement(
-      SpfxSpa,
-      {
-        description: this.properties.description
-      }
-    );
+    // const element: React.ReactElement<ISpfxSpaProps> = React.createElement(
+    //   SpfxSpa,
+    //   {
+    //     description: this.properties.description
+    //   }
+    // );
 
-    ReactDom.render(element, this.domElement);
+    
+
+    ReactDom.render(React.createElement(ReduxApp), this.domElement);
   }
 
   protected onDispose(): void {
