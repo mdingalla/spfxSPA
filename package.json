@@ -49,7 +49,7 @@
     "@types/react-router": "^5.1.4",
     "@types/react-router-redux": "^5.0.18",
     "@types/redux-actions": "^2.6.1",
-    "ajv": "~5.2.2",
+    "ajv": "~6.12.3",
     "gulp": "~3.9.1",
     "redux-devtools": "^3.5.0"
   }
